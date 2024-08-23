@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee List</title>
+    {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+  </head>
+
+  <body>
+    <div class="container mt-5">
+      <center><h2>Employees List</h2></center>
+      <a href="{% url 'AddEmployeePage' %}" class="btn btn-primary"
+        >Create New Employee</a
+      >
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Title</th>
+            <th>Salary</th>
+            <th>Actions/Operations</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for employee in empolyees %}
+          <tr>
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.FirstName }}</td>
+            <td>{{ employee.LastName }}</td>
+            <td>{{ employee.TitleName }}</td>
+            <td>{{ employee.Salary }}</td>
+            <td>
+              <a
+                href="{% url 'GetEmployeePage' employee.id%}"
+                class="btn btn-info"
+                >Details</a
+              >
+              |
+              <a
+                href="{% url 'DeleteEmployeePage' employee.id%}"
+                class="btn btn-danger"
+                >Delete</a
+              >
+              |
+              <a
+                href="{% url 'UpdateEmployeePage' employee.id%}"
+                class="btn btn-success"
+                >Update</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

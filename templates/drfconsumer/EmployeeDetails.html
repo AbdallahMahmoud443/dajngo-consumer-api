@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Details</title>
+    {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+  </head>
+  <body>
+    <div class="container my-5">
+      <center><h2>Employee Details</h2></center>
+      <form method="post">
+        {% csrf_token %}
+        <table class="table">
+          {% bootstrap_form form %}
+        </table>
+      </form>
+      <a href="{% url 'EmployeeListPage' %}" class="btn btn-light"
+        >Back To Employee List</a
+      >
+    </div>
+  </body>
+</html>
